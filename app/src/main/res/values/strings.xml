@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Calendar</string>
+
+    <string-array name="time">
+        <item>1-2時限</item>
+        <item>3-4時限</item>
+        <item>5-6時限</item>
+        <item>7-8時限</item>
+        <item>9-10時限</item>
+    </string-array>
+</resources>

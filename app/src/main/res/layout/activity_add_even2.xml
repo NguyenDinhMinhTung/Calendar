@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tabHost"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="com.example.megas.calendar.AddEven">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolBarInput"
+            android:background="#2196F3"
+            android:minHeight="?attr/actionBarSize" >
+        </android.support.v7.widget.Toolbar>
+
+        <TabWidget
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@android:id/tabs"
+            android:background="#2196F3">
+        </TabWidget>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@android:id/tabcontent">
+
+            <LinearLayout
+                android:id="@+id/tab1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#535353"
+                    android:orientation="horizontal"
+                    android:weightSum="15">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="3"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="日付"
+                        android:textSize="15sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="12"
+                        android:weightSum="4">
+
+                        <TextView
+                            android:id="@+id/txtDate"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="0.5dp"
+                            android:layout_weight="2"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:textColor="#000000" />
+
+                        <TextView
+                            android:id="@+id/txtStartTime"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:textColor="#000000" />
+
+                        <TextView
+                            android:id="@+id/txtStartTime"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:text="~"
+                            android:textColor="#000000" />
+
+                        <TextView
+                            android:id="@+id/txtEndTime"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:gravity="center"
+                            android:textColor="#000000" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#535353"
+                    android:orientation="horizontal"
+                    android:weightSum="15">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="3"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="タイトル"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/edtTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="12"
+                        android:background="#ffffff"
+                        android:paddingLeft="8dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#535353"
+                    android:orientation="horizontal"
+                    android:weightSum="15">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="3"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="内容"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/edtNote"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="0.5dp"
+                        android:layout_weight="12"
+                        android:background="#ffffff"
+                        android:paddingLeft="8dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:weightSum="15">
+
+                    <Button
+                        android:id="@+id/btnSave"
+                        style="@style/button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="11"
+                        android:text="保存"
+                        android:textColor="#ffffff" />
+
+                    <Button
+                        android:id="@+id/btnContinue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="4"
+                        android:text="続ける" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <include
+                android:id="@+id/tab2"
+                layout="@layout/tkb"/>
+
+        </FrameLayout>
+    </LinearLayout>
+</TabHost>
