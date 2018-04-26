@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -133,6 +135,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calendar.set(now.getYear(), now.getMonth(), now.getDay());
         calendar.add(Calendar.DAY_OF_MONTH, i);
         return new Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.mnuLessonManager:
+            {
+                Intent intent=new Intent(this,LessonManager.class);
+                startActivity(intent);
+
+                break;
+            }
+        }
+        return true;
     }
 
     @Override

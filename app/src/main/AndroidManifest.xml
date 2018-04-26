@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".add_even" />
-        <activity android:name=".AddEven"></activity>
+        <activity android:name=".AddEven" />
+        <activity android:name=".LessonManager" />
+        <activity android:name=".AddTimeTable"></activity>
     </application>
 
 </manifest>
