@@ -7,6 +7,13 @@
     android:orientation="vertical"
     tools:context="com.example.megas.calendar.AddEven">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBarInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:minHeight="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
