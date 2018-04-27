@@ -1,19 +1,17 @@
 package com.example.megas.calendar;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.util.Date;
 
 /**
  * Created by megas on 2018/04/01.
  */
 
-public class Item implements Serializable {
+public class EvenItem implements Serializable {
     private String title, note;
     private Time startTime, endTime;
     private com.example.megas.calendar.Date date;
 
-    public Item(String title, com.example.megas.calendar.Date date, String note, Time startTime, Time endTime) {
+    public EvenItem(String title, com.example.megas.calendar.Date date, String note, Time startTime, Time endTime) {
         this.title = title;
         this.note = note;
         this.startTime = startTime;
@@ -22,8 +20,8 @@ public class Item implements Serializable {
     }
 
     @Override
-    protected Item clone() {
-        return new Item(this.title,this.date,this.note,this.startTime,this.endTime);
+    protected EvenItem clone() {
+        return new EvenItem(this.title,this.date,this.note,this.startTime,this.endTime);
     }
 
     public String getTitle() {

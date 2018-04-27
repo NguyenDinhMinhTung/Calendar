@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -20,7 +19,7 @@ public class AddEven extends AppCompatActivity implements View.OnClickListener {
     TextView txtDate, txtStartTime, txtEndTime;
     EditText edtTitle, edtNote;
     Button btnSave, btnContinue;
-    Item oldItem, newItem;
+    EvenItem oldEvenItem, newEvenItem;
     DatePickerDialog datePickerDialog;
     TimePickerDialog timePickerDialog;
     android.support.v7.widget.Toolbar tolInput;
@@ -69,22 +68,22 @@ public class AddEven extends AppCompatActivity implements View.OnClickListener {
 
             btnSave.setLayoutParams(params);
 
-            oldItem = (Item) intent.getSerializableExtra("item");
-            newItem = oldItem.clone();
+            oldEvenItem = (EvenItem) intent.getSerializableExtra("item");
+            newEvenItem = oldEvenItem.clone();
         } else {
             Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
             com.example.megas.calendar.Date date = new com.example.megas.calendar.Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
             Time timeStart = new Time(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
             Time timeEnd = new Time(calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE));
 
-            newItem = new Item("", date, "", timeStart, timeEnd);
+            newEvenItem = new EvenItem("", date, "", timeStart, timeEnd);
         }
 
-        txtDate.setText(newItem.getDate().toShowString());
-        txtStartTime.setText(newItem.getStartTime().toShowString());
-        txtEndTime.setText(newItem.getEndTime().toShowString());
-        edtTitle.setText(newItem.getTitle());
-        edtNote.setText(newItem.getNote());
+        txtDate.setText(newEvenItem.getDate().toShowString());
+        txtStartTime.setText(newEvenItem.getStartTime().toShowString());
+        txtEndTime.setText(newEvenItem.getEndTime().toShowString());
+        edtTitle.setText(newEvenItem.getTitle());
+        edtNote.setText(newEvenItem.getNote());
 
         btnSave.setOnClickListener(this);
         btnContinue.setOnClickListener(this);
@@ -95,8 +94,8 @@ public class AddEven extends AppCompatActivity implements View.OnClickListener {
         datePickerDialog.setOnClickListener(new DatePickerDialog.OnClickListener() {
             @Override
             public void onClick(int year, int monthOfYear, int dayOfMonth) {
-                newItem.setDate(new com.example.megas.calendar.Date(year, monthOfYear, dayOfMonth));
-                txtDate.setText(newItem.getDate().toShowString());
+                newEvenItem.setDate(new com.example.megas.calendar.Date(year, monthOfYear, dayOfMonth));
+                txtDate.setText(newEvenItem.getDate().toShowString());
             }
         });
     }
@@ -120,12 +119,12 @@ public class AddEven extends AppCompatActivity implements View.OnClickListener {
                 if (edtTitle.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "タイトルを入力してください", Toast.LENGTH_SHORT).show();
                 } else {
-                    newItem.setTitle(edtTitle.getText().toString());
-                    newItem.setNote(edtNote.getText().toString());
+                    newEvenItem.setTitle(edtTitle.getText().toString());
+                    newEvenItem.setNote(edtNote.getText().toString());
 
                     Intent intent = new Intent();
-                    intent.putExtra("item", newItem);
-                    intent.putExtra("oldItem",oldItem);
+                    intent.putExtra("item", newEvenItem);
+                    intent.putExtra("oldEvenItem", oldEvenItem);
                     setResult(124, intent);
                     finish();
                 }
@@ -142,15 +141,15 @@ public class AddEven extends AppCompatActivity implements View.OnClickListener {
                         Time time =new Time(hour,minute);
 
                         if (txtEndTime.getText().toString().compareTo(time.toShowString()) < 0) {
-                            newItem.setEndTime(time.clone());
-                            txtEndTime.setText(newItem.getEndTime().toShowString());
+                            newEvenItem.setEndTime(time.clone());
+                            txtEndTime.setText(newEvenItem.getEndTime().toShowString());
                         }
 
-                        newItem.setStartTime(time);
-                        txtStartTime.setText(newItem.getStartTime().toShowString());
+                        newEvenItem.setStartTime(time);
+                        txtStartTime.setText(newEvenItem.getStartTime().toShowString());
                     }
                 });
-                timePickerDialog.setNow(newItem.getStartTime());
+                timePickerDialog.setNow(newEvenItem.getStartTime());
                 timePickerDialog.show(getFragmentManager(), "");
                 break;
 
@@ -161,20 +160,20 @@ public class AddEven extends AppCompatActivity implements View.OnClickListener {
                         Time time = new Time(hour, minute);
 
                         if (txtStartTime.getText().toString().compareTo(time.toShowString()) > 0) {
-                            newItem.setStartTime(time.clone());
-                            txtStartTime.setText(newItem.getStartTime().toShowString());
+                            newEvenItem.setStartTime(time.clone());
+                            txtStartTime.setText(newEvenItem.getStartTime().toShowString());
                         }
 
-                        newItem.setEndTime(time);
-                        txtEndTime.setText(newItem.getEndTime().toShowString());
+                        newEvenItem.setEndTime(time);
+                        txtEndTime.setText(newEvenItem.getEndTime().toShowString());
                     }
                 });
-                timePickerDialog.setNow(newItem.getEndTime());
+                timePickerDialog.setNow(newEvenItem.getEndTime());
                 timePickerDialog.show(getFragmentManager(), "");
                 break;
 
             case R.id.txtDate:
-                datePickerDialog.setNow(newItem.getDate());
+                datePickerDialog.setNow(newEvenItem.getDate());
                 datePickerDialog.show(getFragmentManager(), "");
         }
     }

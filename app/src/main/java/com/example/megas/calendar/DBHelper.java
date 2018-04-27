@@ -53,12 +53,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean insert(Item item) {
-        return insert(item.getTitle(), item.getDate(), item.getStartTime(), item.getEndTime(), item.getNote());
+    public boolean insert(EvenItem evenItem) {
+        return insert(evenItem.getTitle(), evenItem.getDate(), evenItem.getStartTime(), evenItem.getEndTime(), evenItem.getNote());
     }
 
-    public ArrayList<Item> getData(Date now) {
-        ArrayList<Item> list = new ArrayList<>();
+    public ArrayList<EvenItem> getData(Date now) {
+        ArrayList<EvenItem> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor res = db.rawQuery("select * from DATA where " + DB_DATE + "= " + now.toString() + " order by " + START_TIME, null);
@@ -71,7 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Time startTime = new Time(res.getString(res.getColumnIndex(START_TIME)));
             Time endTime = new Time(res.getString(res.getColumnIndex(END_TIME)));
 
-            list.add(new Item(title, date, note, startTime, endTime));
+            list.add(new EvenItem(title, date, note, startTime, endTime));
 
             res.moveToNext();
         }
@@ -79,8 +79,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public ArrayList<Item> getData() {
-        ArrayList<Item> list = new ArrayList<>();
+    public ArrayList<EvenItem> getData() {
+        ArrayList<EvenItem> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor res = db.rawQuery("select * from DATA order by " + START_TIME, null);
@@ -93,7 +93,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Time startTime = new Time(res.getString(res.getColumnIndex(START_TIME)));
             Time endTime = new Time(res.getString(res.getColumnIndex(END_TIME)));
 
-            list.add(new Item(title, date, note, startTime, endTime));
+            list.add(new EvenItem(title, date, note, startTime, endTime));
 
             res.moveToNext();
         }
@@ -108,7 +108,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void delete(Item item) {
-        delete(item.getDate(), item.getStartTime());
+    public void delete(EvenItem evenItem) {
+        delete(evenItem.getDate(), evenItem.getStartTime());
     }
 }

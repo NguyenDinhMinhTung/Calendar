@@ -21,7 +21,7 @@ import java.util.TimeZone;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     FloatingActionButton floatingActionButton;
     DBHelper database;
-    ArrayList<Item> list;
+    ArrayList<EvenItem> list;
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     Button btnBack, btnForward;
@@ -86,10 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (childView != null && e.getAction() == MotionEvent.ACTION_UP) {
                     int pos = recyclerView.getChildPosition(childView);
                     Intent intent = new Intent(MainActivity.this, AddEven.class);
-                    Item item = list.get(pos);
+                    EvenItem evenItem = list.get(pos);
 
                     intent.putExtra("hasData", 1);
-                    intent.putExtra("item", item);
+                    intent.putExtra("evenItem", evenItem);
 
                     startActivityForResult(intent, 125);
                 }
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    public void refreshList(DBHelper database, RecyclerView recyclerView, ArrayList<Item> list, RecyclerView.Adapter adapter, Date now) {
+    public void refreshList(DBHelper database, RecyclerView recyclerView, ArrayList<EvenItem> list, RecyclerView.Adapter adapter, Date now) {
         list = database.getData(now);
         adapter = new MyListAdapter(list);
         recyclerView.setAdapter(adapter);
@@ -117,14 +117,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == 124) {
-            Item item = (Item) data.getSerializableExtra("item");
+            EvenItem evenItem = (EvenItem) data.getSerializableExtra("evenItem");
 
             if (requestCode == 125) {
-                Item oldItem = (Item) data.getSerializableExtra("oldItem");
-                database.delete(oldItem);
+                EvenItem oldEvenItem = (EvenItem) data.getSerializableExtra("oldEvenItem");
+                database.delete(oldEvenItem);
             }
 
-            database.insert(item);
+            database.insert(evenItem);
 
             refreshList(database, recyclerView, list, adapter, now);
         }

@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class MyListAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
-    private ArrayList<Item> data;
+    private ArrayList<EvenItem> data;
 
-    public MyListAdapter(ArrayList<Item> data) {
+    public MyListAdapter(ArrayList<EvenItem> data) {
         this.data = data;
     }
 

@@ -19,7 +19,8 @@
         <activity android:name=".add_even" />
         <activity android:name=".AddEven" />
         <activity android:name=".LessonManager" />
-        <activity android:name=".AddTimeTable"></activity>
+        <activity android:name=".AddTimeTable" />
+        <activity android:name=".AddLesson"></activity>
     </application>
 
 </manifest>
