@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
-        adapter = new MyListAdapter(list);
+        adapter = new MainListAdapter(list);
         recyclerView.setAdapter(adapter);
 
         floatingActionButton = findViewById(R.id.fab);
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void refreshList(DBHelper database, RecyclerView recyclerView, ArrayList<EvenItem> list, RecyclerView.Adapter adapter, Date now) {
         list = database.getData(now);
-        adapter = new MyListAdapter(list);
+        adapter = new MainListAdapter(list);
         recyclerView.setAdapter(adapter);
     }
 

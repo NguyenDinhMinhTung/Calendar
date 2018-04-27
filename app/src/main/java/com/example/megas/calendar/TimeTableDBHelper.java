@@ -49,6 +49,10 @@ public class TimeTableDBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public boolean insert(TimeTableItem item) {
+        return insert(item.getId(), item.getTitle(), item.getStartDay());
+    }
+
     public ArrayList<TimeTableItem> getData() {
         ArrayList<TimeTableItem> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -73,5 +77,15 @@ public class TimeTableDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("DATA", DB_ID + "= ?", new String[]{Integer.toString(item.getId())});
         db.close();
+    }
+
+    public int getNewId() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " order by " + DB_ID + " DESC", null);
+        res.moveToFirst();
+
+        int ID = res.getInt(res.getColumnIndex(DB_ID));
+        return ID + 1;
     }
 }

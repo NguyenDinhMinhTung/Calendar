@@ -32,7 +32,7 @@
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/edtTitle"
+            android:id="@+id/edtTimeTableTitle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="0.5dp"
@@ -59,7 +59,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/txtStartTime"
+            android:id="@+id/txtTimeTableStartDay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="12"
@@ -77,7 +77,7 @@
         android:layout_marginTop="30dp">
 
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnTimeTableSave"
             style="@style/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
