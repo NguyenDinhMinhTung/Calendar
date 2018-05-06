@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.mnuLessonManager:
             {
-                Intent intent=new Intent(this,LessonManager.class);
+                Intent intent=new Intent(this,TimeTableManager.class);
                 startActivity(intent);
 
                 break;

@@ -5,18 +5,18 @@ package com.example.megas.calendar;
  */
 
 public class TimeTableItem {
-    private int id;
+    private int timeTableID;
     private String title;
     private Date startDay;
 
-    public TimeTableItem(int id, String title, Date startDay) {
-        this.id = id;
+    public TimeTableItem(int timeTableID, String title, Date startDay) {
+        this.timeTableID = timeTableID;
         this.title = title;
         this.startDay = startDay;
     }
 
-    public int getId() {
-        return id;
+    public int getTimeTableID() {
+        return timeTableID;
     }
 
     public String getTitle() {

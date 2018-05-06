@@ -8,18 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
-/**
- * Created by megas on 2018/04/01.
- */
-
-public class TimeTableDBHelper extends SQLiteOpenHelper {
-    public static final String TABLE_NAME = "TIMETABLELIST";
+public class LessionDBHelper extends SQLiteOpenHelper {
+    public static final String TABLE_NAME = "LESSONLIST";
     public static final String DATABASE_NAME = "LESSON";
     public static final String DB_ID = "id";
     public static final String DB_STARTDAY = "start_day";
     public static final String DB_TITLE = "title";
 
-    public TimeTableDBHelper(Context context) {
+    public LessionDBHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
